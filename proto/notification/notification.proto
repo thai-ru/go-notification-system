@@ -1,0 +1,36 @@
+syntax = "proto3";
+package notification;
+option go_package = './pb';
+
+message Notification {
+  int64 id = 1;
+  int64 user_id = 2;
+  string title = 3;
+  string content = 4;
+  bool is_read = 5;
+  string created_at = 6;
+}
+
+message CreateNotificationRequest {
+  int64 user_id = 1;
+  string title = 2;
+  string content = 3;
+  bool send_email = 4;
+}
+
+message CreateNotificationResponse {
+  Notification notification = 1;
+}
+
+message GetUserNotificationsRequest {
+  int64 user_id = 1;
+}
+
+message GetUserNotificationsResponse {
+  repeated Notification notifications = 1;
+}
+
+service NotificationService {
+  rpc CreateNotification (CreateNotificationRequest) returns (CreateNotificationResponse) {}
+  rpc GetUserNotifications (GetUserNotificationsRequest) returns (GetUserNotificationsResponse) {}
+}
