@@ -1,0 +1,31 @@
+!config.yaml
+#!go.mod
+#!go.sum
+!creds.json
+
+# Go build output and binaries
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# OS generated files
+.DS_Store
+Thumbs.db
+dev.db
+
+# Ignore Go test cache
+*.test
+
+# Logs and temp files
+*.log
+*.tmp
+
+# Temporary or unwanted directories
+tmp/
+vendor/
+.idea/
+.vscode/
+.env

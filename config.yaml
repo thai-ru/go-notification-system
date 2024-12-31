@@ -1,0 +1,54 @@
+# config.yaml
+app:
+  port: 50051               # gRPC server port
+  app_base_url: https://hrms-azure.vercel.app
+  http_port: 9092
+
+gcs:
+  bucket_name: "cc_hrms"    # GCS bucket name
+  project_id: "gen-lang-client-0745971111"      # GCP project ID
+  credentials_path: "creds.json"
+
+database:
+  driver: "sqlite"          # Database driver: sqlite, postgres, etc.
+  source: "file:dev.db?cache=shared&mode=rwc"  # SQLite in development
+
+smtp:
+  host: "smtp.gmail.com"    # SMTP server host
+  port: 587                 # SMTP server port
+  username: "robinsonthairu@gmail.com"
+  password: "jbixkvhhmirqlhvs"
+  from_email: "Zuri Care Command"
+
+#jbix kvhh mirq lhvs
+auth:
+  token_expiration: "24h"   # JWT token expiration time
+  max_login_attempts: 5     # Maximum failed login attempts before lockout
+  lockout_duration: "15m"   # Account lockout duration
+  password_min_length: 8    # Minimum password length
+  require_uppercase: true   # Require at least one uppercase letter
+  require_numbers: true     # Require at least one number
+  require_special: true     # Require at least one special character
+
+environments:
+  development:
+    database:
+      driver: "sqlite"
+      source: "file:dev.db?cache=shared&mode=rwc"
+    smtp:
+      host: "smtp.gmail.com"
+      port: 587
+      username: "Zuri Care Command"
+      password: "jbixkvhhmirqlhvs"
+      from_email: "robinsonthairu@gmail.com"
+
+  production:
+    database:
+      driver: "postgres"
+      source: "host=postgresql-cribzy.alwaysdata.net user=cribzy password=S3spxo0b! dbname=cribzy_cchrms sslmode=disable"
+    smtp:
+      host: "smtp.production-server.com"
+      port: 587
+      username: "prod-email@yourcompany.com"
+      password: "${SMTP_PASSWORD}"  # Use environment variable in production
+      from_email: "noreply@yourcompany.com"
